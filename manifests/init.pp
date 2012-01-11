@@ -21,35 +21,13 @@ class smartmontools {
     ensure => installed,
   }
 
-  #$devices = $smartdevices ? {
-  #  ''      => [ '/dev/hda', '/dev/hdb' ]
-  #  default => $smart_devices;
-  #}
-
-  #file { "/etc/smartmontools":
-  #  ensure => 'directory',
-  #  owner  => 'root',
-  #  group  => 'root',
-  #  mode   =>  0755,
-  #}
-
-  #file { "/etc/smartd.conf":
-  #  ensure  => present,
-  #  owner   => root,
-  #  group   => root,
-  #  mode    => 0644,
-  #  notify  => Service["smartmontools"],
-  #  require => File["/etc/smartmontools"],
-  #  content => template('smartmontools/smartmontools.conf.erb'),
-  #}
-
   file { "/etc/default/smartmontools": 
     ensure  => present,
     owner   => root,
     group   => root,
     mode    => 0644,
     notify  => Service["smartmontools"],
-    source  => "puppet://$server/modules/smartmontools/default/smartmontools",
+    source  => "puppet:///modules/smartmontools/default/smartmontools",
   }
 
   service { "smartmontools":
