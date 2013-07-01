@@ -17,24 +17,24 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class smartmontools {
-  package { "smartmontools":
+  package { 'smartmontools':
     ensure => installed,
   }
 
-  file { "/etc/default/smartmontools": 
+  file { '/etc/default/smartmontools':
     ensure  => present,
     owner   => root,
     group   => root,
     mode    => 0644,
-    notify  => Service["smartmontools"],
-    source  => "puppet:///modules/smartmontools/default/smartmontools",
+    notify  => Service['smartmontools'],
+    source  => 'puppet:///modules/smartmontools/default/smartmontools',
   }
 
-  service { "smartmontools":
+  service { 'smartmontools':
     enable     => true,
     hasrestart => true,
-    pattern    => "/usr/sbin/smartd",
+    pattern    => '/usr/sbin/smartd',
     ensure     => running,
-    require    => [ File["/etc/default/smartmontools"], Package["smartmontools"] ],
+    require    => [ File['/etc/default/smartmontools'], Package['smartmontools'] ],
   }
 }
