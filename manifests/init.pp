@@ -31,10 +31,10 @@ class smartmontools {
   }
 
   service { 'smartmontools':
+    ensure     => running,
     enable     => true,
     hasrestart => true,
     pattern    => '/usr/sbin/smartd',
-    ensure     => running,
     require    => [ File['/etc/default/smartmontools'], Package['smartmontools'] ],
   }
 }
