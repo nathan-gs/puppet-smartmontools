@@ -25,7 +25,7 @@ class smartmontools {
     ensure  => present,
     owner   => root,
     group   => root,
-    mode    => 0644,
+    mode    => '0644',
     notify  => Service['smartmontools'],
     source  => 'puppet:///modules/smartmontools/default/smartmontools',
   }
