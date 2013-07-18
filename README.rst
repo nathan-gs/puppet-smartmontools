@@ -7,6 +7,17 @@ Add to your node definition::
 
     include smartmontools
 
+Running the tests
+******
+
+Install the dependencies using Bundler::
+
+    bundle install
+
+Run the following command::
+
+    bundle exec rake spec
+
 Origin
 ******
 
